@@ -1,0 +1,7 @@
+APP ANDROID (APK)
+1. Instale o Android Studio (developer.android.com/studio) e abra uma vez ate terminar o download do SDK.
+2. De dois cliques em criar-android.bat (precisa de internet).
+3. No Android Studio: File > Open > escolha a pasta "android" desta pasta. Espere o Gradle sincronizar.
+4. Menu Build > Build Bundle(s) / APK(s) > Build APK(s).
+5. O APK fica em android\app\build\outputs\apk\debug\app-debug.apk
+6. Passe para o celular, instale (permita "fontes desconhecidas") e abra com o cabo plugado.
