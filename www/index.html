@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kuba | Equalizador</title>
+
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/7448b013.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/8a38ebc0.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/4b89064e.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/0527cf9c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/c83b27bf.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/0c45e35b.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/245646e0.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("assets/fonts/75cc692c.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("assets/fonts/0c68db9f.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+:root{
+  --bg:#0F0E0B; --surface:#17150F; --surface-2:#1B1913; --fg:#F5F0E6; --muted:#A8A092; --line:#2E2A21;
+  --amber:#F3C433; --amber-soft:rgba(243,196,51,0.12); --target:#3A352A; --go:#F3C433; --go-fg:#0F0E0B; --ok:#8FC79F; --warn:#F0A070; --warn-bg:#2A2112;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg)}
+body{color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;margin:0;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}a:hover{color:#FFD860}
+.wrap{max-width:1240px;margin:0 auto;padding:20px clamp(16px,4vw,40px) 0;display:grid;gap:clamp(24px,4vw,40px)}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:26px;width:auto;display:block}
+.brand .sep{width:1px;height:22px;background:var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.conn{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 6px 6px 16px}
+.dot{width:8px;height:8px;border-radius:50%;background:#5A5240;flex:none}
+.dot.on{background:var(--ok);box-shadow:0 0 0 4px rgba(143,199,159,.18)}
+.conn-label{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.conn:has(.dot.on){padding-right:16px}
+button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);padding:9px 18px;font-weight:600;font-size:14px;transition:border-color .2s,background .2s}
+button:hover{border-color:var(--muted)}
+button:focus-visible,.preset:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.btn-go{background:var(--go);color:var(--go-fg);border-color:var(--go);font-weight:700;padding:15px 28px;font-size:15px}
+.btn-go:hover{background:#FFD860;border-color:#FFD860}
+.hero{display:grid;gap:18px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(56px,11vw,120px);line-height:.9;margin:0;text-transform:uppercase;letter-spacing:-.005em}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{border-radius:999px;padding:6px 22px 6px 6px;background:var(--surface);display:flex;align-items:center;gap:14px;font-size:15px;text-align:left}
+.seg button[aria-pressed="true"]{border-color:var(--amber)}
+.seg img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 22%;background:#fff;display:block;flex:none;transform:scale(1);}
+.seg .m-name{font-family:var(--display);font-size:28px;line-height:1;text-transform:uppercase;font-weight:400}
+.seg .m-sub{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:4px}
+.model-note:empty{display:none}
+.model-note{font-size:15px;color:var(--muted);margin:0;max-width:52ch}
+.main{display:grid;gap:clamp(20px,3vw,32px)}
+section{display:grid;gap:14px;min-width:0}
+h2{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+@media (min-width:1100px){#gridPref,#gridRef{grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}#gridPref .preset,#gridRef .preset{padding:12px 12px}#gridPref .preset .name,#gridRef .preset .name{font-size:15px}#gridPref .preset .desc,#gridRef .preset .desc{font-size:12.5px}}
+@media (min-width:640px) and (max-width:1099px){#gridPref,#gridRef{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.preset{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0;transition:border-color .2s,background .2s,color .2s}
+.preset:hover{border-color:#5A5240}
+.preset[aria-checked="true"]{border-color:var(--amber);background:var(--amber);color:#0F0E0B}
+.preset[aria-checked="true"] .desc{color:#3A2F0A}
+.preset[aria-checked="true"] .applied-tag{color:#1F1A0A}.preset[aria-checked="true"] .applied-tag::before{background:#1F1A0A}
+.preset .name{font-weight:700;font-size:16px}
+.preset .desc{font-size:13px;color:var(--muted);line-height:1.4;text-wrap:pretty}
+.applied-tag{align-self:flex-start;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--ok);text-transform:uppercase;letter-spacing:.1em;display:inline-flex;align-items:center;gap:6px}
+.applied-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.curve{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,2.4vw,28px);display:grid;gap:14px;}
+.curve-head{display:grid;gap:4px}
+.curve-title{font-family:var(--display);font-size:clamp(40px,5vw,60px);line-height:.95;text-transform:uppercase;font-weight:400}
+.curve-meta{font-size:15px;color:var(--muted)}
+.curve-meta.hot{color:var(--warn)}
+#big{width:100%;aspect-ratio:2.25/1;min-height:220px;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:22px;height:0;border-top:2.5px solid var(--amber)}
+.sw-raw{border-top:7px solid var(--target);border-radius:4px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:20px;padding:32px;color:var(--muted)}
+.empty p{margin:0;max-width:52ch}
+.apply{position:sticky;bottom:0;z-index:5;margin:0 calc(-1 * clamp(16px,4vw,40px));padding:14px clamp(16px,4vw,40px) calc(14px + env(safe-area-inset-bottom));background:rgba(15,14,11,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);display:grid;gap:12px}
+.apply-row{display:flex;gap:12px 16px;align-items:center;flex-wrap:wrap}
+.apply-now{display:grid;gap:0;margin-right:auto;min-width:0}
+.apply-now span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.apply-now span:last-child{font-family:var(--display);font-size:24px;text-transform:uppercase;line-height:1.1}
+.confirm{display:grid;gap:12px;background:var(--warn-bg);border:1px solid #5A4A14;border-radius:14px;padding:14px 16px}
+.confirm p{margin:0}
+.status{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.status:empty{display:none}
+.status.ok{color:var(--ok)} .status.err{color:var(--warn)}
+.ref-sec{gap:12px}
+.ref-toggle{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:100%}
+.ref-toggle:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.ref-h{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+.ref-names{font-size:13px;color:var(--muted);flex:1 1 auto;min-width:0}
+.chev{width:8px;height:8px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg) translateY(-3px);transition:transform .2s;align-self:center}
+.ref-toggle[aria-expanded="true"] .chev{transform:rotate(-135deg) translateY(-1px)}
+.ref-toggle:hover .ref-names{color:var(--fg)}
+.ref-body{display:grid;gap:12px}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+.ref-note{margin:2px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted);max-width:68ch;padding-left:12px;border-left:2px solid var(--line);text-wrap:pretty}
+.notes{font-size:13px;color:var(--muted);display:grid;gap:8px;padding:8px 0 24px}
+.notes p{margin:0;max-width:72ch}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--line);color:var(--muted);padding:2px 8px;border-radius:999px;margin-right:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<meta name="theme-color" content="#0F0E0B"><link rel="icon" href="assets/icon-192.png"><link rel="apple-touch-icon" href="assets/icon-192.png"><script>
+(function(){
+ var C=window.Capacitor; if(!(C&&C.isNativePlatform&&C.isNativePlatform())) return;
+ function P(){ return window.Capacitor.Plugins.UsbHid; }
+ function dev(name){ return {vendorId:0x3302,productId:0x8902,productName:name||'Cabo',opened:true,
+  open:function(){return Promise.resolve();}, close:function(){return P().close();},
+  sendReport:function(id,data){return P().sendReport({reportId:id,data:Array.prototype.slice.call(data)});} }; }
+ var hid={ getDevices:function(){return Promise.resolve([]);},
+  requestDevice:function(){return P().connect().then(function(r){return [dev(r.name)];}); },
+  addEventListener:function(){}, removeEventListener:function(){} };
+ Object.defineProperty(navigator,'hid',{value:hid,configurable:true});
+})();
+</script></head><body><div class="wrap">
+  <header>
+    <div class="brand">
+      <img src="assets/logo.svg" alt="Kuba">
+      <span class="sep"></span>
+      <span class="eyebrow">Equalizador</span>
+    </div>
+    <div class="conn">
+      <span class="dot" id="dot"></span>
+      <span class="conn-label" id="connLabel">Cabo desconectado</span>
+      <button id="connectBtn" type="button">Conectar cabo</button>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="hModel">
+    <h2 id="hModel">Seu fone</h2>
+    <div class="seg" role="group" aria-label="Modelo">
+      <button type="button" id="mAuri" data-model="auri" aria-pressed="true"><img src="assets/auri.png" alt=""><span><span class="m-name">Auri</span><span class="m-sub">Cabo USB-C com DSP</span></span></button>
+    </div>
+    <p class="model-note" id="modelNote"></p>
+  </section>
+
+  <div class="empty" id="emptyBox" hidden=""><p>Os presets do Disco 3 ainda não foram definidos. Por enquanto, só o Auri tem assinaturas para gravar.</p></div>
+
+  <div class="main">
+    <div class="curve" id="curveBox">
+      <div class="curve-head">
+        <span class="curve-title" id="curveTitle"></span>
+        <span class="curve-meta" id="curveMeta"></span>
+      </div>
+      <canvas id="big" aria-label="Resposta de frequência do Auri com o preset, sobre o alvo do preset"></canvas>
+      <div class="legend"><span><i class="sw sw-res"></i>Auri com este preset</span><span><i class="sw sw-raw"></i><span id="legendTarget">Alvo JM-1</span></span></div>
+    </div>
+
+    <section aria-labelledby="hPref">
+      <h2 id="hPref">Curvas de preferência</h2>
+      <div class="grid" id="gridPref" role="radiogroup" aria-labelledby="hPref"></div>
+    </section>
+
+    <section id="secRef" class="ref-sec">
+      <button type="button" class="ref-toggle" id="refToggle" aria-expanded="false" aria-controls="refBody">
+        <span class="ref-h" id="hRef">Curvas de referência</span>
+        <span class="ref-names" id="refNames"></span>
+        <span class="chev" aria-hidden="true"></span>
+      </button>
+      <div class="ref-body" id="refBody" hidden>
+      <div class="grid" id="gridRef" role="radiogroup" aria-labelledby="hRef"></div>
+      <p class="ref-note">A rigor, algumas destas também são curvas de preferência. A Harman, por exemplo, nasceu de pesquisas sobre o som que a maioria das pessoas prefere. Elas estão nesta categoria porque é assim que a comunidade de áudio as usa: como régua para comparar fones.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="notes">
+    <p>Funciona no Chrome ou Edge de computador (Windows, Mac ou Linux). Celulares, tablets e o Safari não acessam o cabo. Como o preset fica gravado no cabo, depois de aplicado ele vale em qualquer aparelho, inclusive no celular.</p>
+  </div>
+
+  <div class="apply" id="applyBox">
+    <div class="confirm" id="confirm" hidden="">
+      <p id="confirmText"></p>
+      <div class="apply-row">
+        <button class="btn-go" id="confirmYes" type="button">Gravar no cabo</button>
+        <button id="confirmNo" type="button">Cancelar</button>
+      </div>
+    </div>
+    <div class="apply-row">
+      <div class="apply-now"><span>Selecionado</span><span id="applyName"></span></div>
+      <span class="status" id="status" role="status"></span>
+      <button class="btn-go" id="applyBtn" type="button">Aplicar no fone</button>
+    </div>
+  </div>
+</div>
+<script>
+// ===== Núcleo do protocolo (cabo TTGK "USB DSP Audio", família Walkplay) =====
+const DSP = {
+  VENDOR_ID: 0x3302, PRODUCT_ID: 0x8902, REPORT_ID: 0xCB, FS: 96000,
+  // 14 bytes fixos + 4 bytes de pré-amp (ganho linear, int32 LE, Q23: 1.0 = 0x00800000)
+  HEADER: [0x45,0x51,0x31,0x23,0xd6,0x00,0x00,0x0a,0x04,0x05,0x01,0x0a,0x00,0x00],
+  APPLY: [0x01,0x65,0x00,0x01,0xff],
+  peak(f, g, q, fs) {
+    const A = Math.pow(10, g/40), w = 2*Math.PI*f/fs, al = Math.sin(w)/(2*q), a0 = 1 + al/A;
+    const b0 = (1+al*A)/a0, b1 = -2*Math.cos(w)/a0, b2 = (1-al*A)/a0, a1 = b1, a2 = (1-al/A)/a0;
+    return { b0, b1, b2, a1, a2 };
+  },
+  lowShelf(f, g, q, fs) {
+    const A = Math.pow(10, g/40), w = 2*Math.PI*f/fs, al = Math.sin(w)/(2*q), c = Math.cos(w), s = 2*Math.sqrt(A)*al;
+    const a0 = (A+1)+(A-1)*c+s;
+    return { b0: A*((A+1)-(A-1)*c+s)/a0, b1: 2*A*((A-1)-(A+1)*c)/a0, b2: A*((A+1)-(A-1)*c-s)/a0,
+             a1: -2*((A-1)+(A+1)*c)/a0, a2: ((A+1)+(A-1)*c-s)/a0 };
+  },
+  coeffs(b) { return (b.type === 'LS' ? DSP.lowShelf : DSP.peak)(b.f, b.g, b.q, DSP.FS); },
+  crc16(bytes) {
+    let c = 0xFFFF;
+    for (const x of bytes) { c ^= x << 8; for (let i=0;i<8;i++) c = (c & 0x8000) ? ((c<<1) ^ 0x1021) & 0xFFFF : (c<<1) & 0xFFFF; }
+    return c;
+  },
+  blob(bands, preDb) {
+    if (bands.length !== 10) throw new Error('São necessárias 10 bandas');
+    const out = [...DSP.HEADER];
+    const pre = Math.round(Math.pow(10, (preDb||0)/20) * 8388608);
+    out.push(pre & 255, (pre>>>8) & 255, (pre>>>16) & 255, (pre>>>24) & 255);
+    for (const b of bands) {
+      const c = DSP.coeffs(b);
+      for (const v of [c.b0, c.b2, -c.a1, c.b1, -c.a2]) {
+        const n = Math.round(v * 134217728);
+        if (n > 2147483647 || n < -2147483648) throw new Error('Filtro fora da faixa do DSP');
+        out.push(n & 255, (n>>>8) & 255, (n>>>16) & 255, (n>>>24) & 255);
+      }
+    }
+    const crc = DSP.crc16(out);
+    out.push(crc & 255, crc >> 8);
+    return out;
+  },
+  packets(bands, preDb) {
+    const b = DSP.blob(bands, preDb), pk = [];
+    for (let i=0;i<9;i++) { const p = new Uint8Array(31); p[0]=i; const chunk = b.slice(i*30, i*30+30); p.set(chunk, 1); pk.push(p); }
+    return pk;
+  },
+  response(bands, f) {
+    let db = 0;
+    const w = 2*Math.PI*f/DSP.FS, c1 = Math.cos(w), s1 = Math.sin(w), c2 = Math.cos(2*w), s2 = Math.sin(2*w);
+    for (const b of bands) {
+      const k = DSP.coeffs(b);
+      const nr = k.b0 + k.b1*c1 + k.b2*c2, ni = -(k.b1*s1 + k.b2*s2);
+      const dr = 1 + k.a1*c1 + k.a2*c2, di = -(k.a1*s1 + k.a2*s2);
+      db += 10*Math.log10((nr*nr+ni*ni)/(dr*dr+di*di));
+    }
+    return db;
+  }
+};
+if (typeof module !== 'undefined') module.exports = DSP;
+// Presets do Auri. Padrão = filtros do Leonardo; demais = ajuste do Auri a cada alvo (prioridade até 8 kHz).
+// Pré-amps igualam o volume dos presets entre 300 Hz e 3 kHz, sem clipping (cortes antes dos reforços).
+const PK = (f,g,q) => ({type:'PK', f, g, q});
+const LS = (f,g,q) => ({type:'LS', f, g, q});
+const PRESETS = {
+  disco: [],
+  auri: [
+    {id:'padrao', group:'pref', name:'Auri', desc:'A assinatura do Auri, inspirada pela comunidade.', target:'JM-1', pre:-2.8, bands:[
+      PK(25.0,-0.8,0.3), PK(150,-3.0,0.69), PK(2237,-10.0,1.41), PK(4348,-6.1,3.0), PK(4958,-8.3,2.72), PK(7178,-10.0,3.0), PK(11063,-10.0,3.0), PK(520,3.1,0.81), PK(3046,5.7,1.51), PK(5995,3.4,0.59)]},
+    {id:'pref6', group:'pref', name:'Natural', desc:'Subgrave presente, médios limpos e agudos arejados.', target:'JM-1', pre:-3.0, show:[
+      PK(25.0,-2.9,0.5), PK(157,-5.2,0.5), PK(1077,-1.5,2.47), PK(1837,-4.3,1.67), PK(2272,-7.3,2.05), PK(4326,-8.0,2.73), PK(4970,-7.5,3.0), PK(7130,-7.3,3.0), PK(424,3.9,0.54), PK(3334,7.0,0.78)],
+      bands:[
+      PK(25.0,-2.0,0.4), PK(167,-6.2,0.53), PK(2560,-8.0,1.03), PK(4911,-8.0,4.0), PK(7838,-6.7,4.0), PK(11523,-6.5,4.0), PK(270,0.1,4.0), PK(404,4.1,0.48), PK(2930,7.0,2.94), PK(3537,4.5,4.0)]},
+    {id:'emv', group:'pref', name:'Em V', desc:'Alvo com graves e agudos levantados.', target:'JM-1', pre:-7.8, bands:[
+      PK(1084,-1.1,3.0), PK(1930,-1.9,2.39), PK(2334,-8.0,1.93), PK(4454,-8.0,2.63), PK(5568,-4.2,1.55), PK(7504,-7.2,3.0), PK(107,0.7,0.5), PK(473,2.4,0.5), PK(6814,7.7,1.48), PK(8862,8.0,3.0)]},
+    {id:'basshead', group:'pref', name:'Basshead', desc:'Para os amantes de graves.', target:'Basshead', pre:-5.7, bands:[
+      PK(4613,-12.0,2.5), PK(2246,-12.0,1.31), PK(6746,-7.9,2.5), PK(1122,-2.6,1.73), PK(10302,-6.1,2.5), PK(20.0,-5.0,0.42), PK(223,-4.9,0.84), PK(3184,2.5,2.5), PK(3116,9.2,0.3), LS(286,8.2,0.47)]},
+    {id:'energico', group:'pref', name:'Enérgico', desc:'Sonoridade intensa, pensada para rock.', target:'JM-1', pre:-3.3, bands:[
+      PK(25.0,-3.1,0.5), PK(97.0,-1.4,0.68), PK(2445,-8.0,0.87), PK(4725,-8.0,3.0), PK(6920,-8.0,3.0), PK(12439,-8.0,1.96), PK(1838,5.0,0.92), PK(2904,4.5,2.62), PK(3665,3.7,3.0), PK(8376,8.0,2.42)]},
+    {id:'musical', group:'pref', name:'Musical', desc:'Graves fortes, médios comedidos e agudos delicados.', target:'JM-1', pre:-2.3, bands:[
+      PK(24.0,-3.2,0.1), PK(2277,-8.0,1.69), PK(4588,-9.4,2.8), PK(5979,-3.8,2.0), PK(7184,-3.2,3.0), PK(10638,-10.4,3.0), PK(840,2.2,1.54), PK(1393,2.0,1.85), PK(3224,1.1,3.0), PK(15808,2.2,2.5)]},
+    {id:'analitico', group:'pref', name:'Analítico', desc:'Para quem prioriza detalhamento e clareza.', target:'Analítico', pre:-0.8, bands:[
+      LS(120,-9.3,0.44), PK(7007,-9.1,2.5), PK(147,-3.5,0.48), PK(4561,-12.0,2.5), PK(2198,-12.0,1.42), PK(255,-0.4,1.78), PK(11291,-7.8,2.5), PK(1093,-2.7,1.17), PK(3226,6.2,0.3), PK(3028,1.8,2.5)]},
+    {id:'referencia', group:'ref', name:'JM-1', desc:'Sonoridade fiel à JM-1.', target:'Referência', pre:-4.0, bands:[
+      LS(297,-3.4,0.81), PK(11107,-4.8,2.5), PK(1027,-1.7,1.98), PK(20.0,-3.6,0.57), PK(7055,-3.8,2.5), PK(4588,-8.0,2.5), PK(2208,-8.2,1.83), PK(595,3.5,0.42), PK(3144,5.6,1.69), PK(3031,0.5,2.5)]},
+    {id:'harman', group:'ref', name:'Harman IE 2019', desc:'A curva de preferência mais estudada do mundo.', target:'Harman', pre:-0.5, bands:[
+      LS(199,-5.6,0.94), PK(399,-1.4,1.62), PK(2271,-8.0,1.32), PK(256,-4.2,1.17), PK(7566,-7.6,0.43), PK(4662,-6.8,2.5), PK(9138,3.8,2.5), PK(3318,7.8,1.32), PK(5767,5.8,2.5), PK(3209,1.1,1.33)]},
+    {id:'vdsf', group:'ref', name:'VDSF', desc:'Meio-termo entre campo difuso e Harman, com graves discretos.', target:'JM-1', pre:-2.2, bands:[
+      PK(25.0,-8.0,0.5), PK(80.0,-5.0,0.52), PK(210,-2.0,0.79), PK(1286,-5.9,1.34), PK(1978,-7.4,1.67), PK(2375,-5.4,2.4), PK(4384,-4.7,3.0), PK(4833,-6.0,3.0), PK(7252,-7.6,3.0), PK(1718,8.0,0.5)]},
+    {id:'etymotic', group:'ref', name:'Etymotic', desc:'Graves contidos e muita definição nos médios e agudos.', target:'JM-1', pre:-2.2, bands:[
+      PK(25.0,-8.0,0.97), PK(45.0,-8.0,0.5), PK(105,-5.3,0.51), PK(226,-1.4,0.91), PK(2190,-8.0,1.39), PK(4276,-5.0,3.0), PK(4847,-7.2,3.0), PK(7260,-6.8,3.0), PK(785,1.8,1.42), PK(3120,6.5,1.01)]}
+  ]
+};
+// Medição do Auri sem DSP (suavizada 1/12 oit., 1/6 acima de 3 kHz) e alvos de cada preset (IEC 711), 280 pontos
+const MEAS = { auri: {"f":[20.0,20.5,21.02,21.54,22.08,22.64,23.2,23.78,24.38,24.99,25.62,26.26,26.92,27.59,28.29,28.99,29.72,30.47,31.23,32.01,32.82,33.64,34.48,35.35,36.23,37.14,38.07,39.03,40.0,41.01,42.03,43.09,44.17,45.28,46.41,47.57,48.77,49.99,51.24,52.53,53.84,55.19,56.58,58.0,59.45,60.94,62.47,64.03,65.64,67.28,68.97,70.7,72.47,74.29,76.15,78.06,80.02,82.02,84.08,86.19,88.35,90.56,92.83,95.16,97.54,99.99,102.5,105.07,107.7,110.4,113.17,116.0,118.91,121.89,124.95,128.08,131.29,134.58,137.96,141.41,144.96,148.59,152.32,156.14,160.05,164.06,168.17,172.39,176.71,181.14,185.68,190.34,195.11,200.0,205.01,210.15,215.42,220.82,226.36,232.03,237.85,243.81,249.92,256.19,262.61,269.19,275.94,282.86,289.95,297.22,304.67,312.3,320.13,328.16,336.38,344.82,353.46,362.32,371.4,380.71,390.26,400.04,410.07,420.35,430.89,441.69,452.76,464.11,475.74,487.67,499.9,512.43,525.27,538.44,551.94,565.77,579.96,594.5,609.4,624.67,640.33,656.39,672.84,689.71,707.0,724.72,742.89,761.51,780.6,800.17,820.23,840.79,861.86,883.47,905.62,928.32,951.59,975.44,999.9,1024.96,1050.65,1076.99,1103.99,1131.67,1160.03,1189.11,1218.92,1249.48,1280.8,1312.91,1345.82,1379.56,1414.14,1449.59,1485.93,1523.18,1561.36,1600.5,1640.62,1681.75,1723.91,1767.12,1811.42,1856.83,1903.38,1951.09,2000.0,2050.14,2101.53,2154.21,2208.21,2263.57,2320.31,2378.48,2438.1,2499.22,2561.87,2626.09,2691.92,2759.4,2828.57,2899.48,2972.17,3046.67,3123.05,3201.33,3281.59,3363.85,3448.17,3534.61,3623.22,3714.05,3807.15,3902.59,4000.42,4100.7,4203.5,4308.87,4416.88,4527.61,4641.1,4757.45,4876.71,4998.96,5124.27,5252.73,5384.4,5519.38,5657.74,5799.57,5944.95,6093.98,6246.74,6403.34,6563.86,6728.4,6897.07,7069.96,7247.19,7428.87,7615.09,7805.99,8001.67,8202.25,8407.87,8618.64,8834.69,9056.16,9283.18,9515.89,9754.43,9998.96,10249.61,10506.55,10769.93,11039.91,11316.66,11600.34,11891.14,12189.23,12494.79,12808.01,13129.08,13458.2,13795.57,14141.4,14495.9,14859.28,15231.77,15613.6,16005.0,16406.22,16817.49,17239.07,17671.22,18114.2,18568.29,19033.76,19510.9,20000.0],"db":[82.12,82.12,82.12,82.12,82.12,82.14,82.15,82.16,82.14,82.12,82.1,82.09,82.07,82.06,82.04,82.03,82.0,81.98,81.93,81.88,81.85,81.83,81.8,81.76,81.71,81.66,81.61,81.56,81.52,81.46,81.41,81.36,81.31,81.25,81.19,81.11,81.04,80.96,80.88,80.8,80.7,80.59,80.49,80.39,80.31,80.22,80.13,80.03,79.93,79.82,79.71,79.61,79.5,79.39,79.28,79.16,79.04,78.92,78.79,78.67,78.55,78.42,78.29,78.16,78.03,77.89,77.76,77.62,77.49,77.35,77.2,77.06,76.92,76.78,76.63,76.48,76.33,76.18,76.03,75.89,75.74,75.58,75.43,75.28,75.13,74.98,74.83,74.68,74.52,74.36,74.2,74.05,73.9,73.75,73.6,73.45,73.31,73.16,73.02,72.88,72.74,72.59,72.45,72.31,72.16,72.02,71.89,71.75,71.62,71.48,71.35,71.22,71.09,70.96,70.83,70.71,70.59,70.48,70.36,70.25,70.14,70.03,69.93,69.83,69.74,69.65,69.56,69.47,69.39,69.32,69.24,69.17,69.1,69.04,68.98,68.93,68.88,68.84,68.8,68.77,68.75,68.73,68.72,68.71,68.71,68.72,68.74,68.77,68.8,68.84,68.87,68.91,68.98,69.09,69.24,69.45,69.69,69.93,70.17,70.43,70.69,70.96,71.22,71.48,71.74,71.99,72.24,72.49,72.75,73.01,73.29,73.58,73.9,74.24,74.59,74.96,75.35,75.76,76.2,76.66,77.15,77.67,78.22,78.79,79.38,79.99,80.59,81.16,81.69,82.15,82.48,82.68,82.73,82.63,82.39,82.06,81.66,81.22,80.78,80.35,79.95,79.58,79.26,79.0,78.79,78.64,78.55,78.52,78.58,78.7,78.91,79.21,79.6,80.09,80.69,81.37,82.11,82.82,83.37,83.69,83.75,83.51,82.97,82.17,81.2,80.2,79.23,78.38,77.66,77.14,76.82,76.67,76.72,76.95,77.32,77.77,78.2,78.46,78.44,78.02,77.21,76.1,74.81,73.49,72.29,71.27,70.54,70.11,70.02,70.28,70.89,71.71,72.54,73.09,73.1,72.46,71.21,69.6,67.95,66.48,65.38,64.7,64.41,64.43,64.66,64.99,65.35,65.65,65.77,65.54,64.77,63.36,61.44,59.18,56.79,54.46,52.32,50.44,48.87,47.59],"targets":{"padrao":[2.47,2.43,2.4,2.38,2.35,2.33,2.31,2.29,2.26,2.24,2.21,2.18,2.15,2.12,2.09,2.06,2.03,2.0,1.97,1.94,1.9,1.87,1.83,1.8,1.76,1.73,1.69,1.66,1.63,1.6,1.56,1.53,1.5,1.47,1.43,1.4,1.37,1.33,1.29,1.26,1.22,1.19,1.15,1.11,1.08,1.04,1.01,0.97,0.93,0.89,0.86,0.82,0.78,0.75,0.71,0.68,0.64,0.61,0.58,0.55,0.52,0.49,0.46,0.43,0.4,0.37,0.34,0.31,0.28,0.24,0.21,0.17,0.13,0.08,0.03,-0.02,-0.07,-0.12,-0.18,-0.23,-0.28,-0.33,-0.38,-0.42,-0.47,-0.51,-0.54,-0.58,-0.61,-0.64,-0.67,-0.7,-0.72,-0.75,-0.78,-0.82,-0.85,-0.89,-0.92,-0.95,-0.98,-1.01,-1.03,-1.04,-1.06,-1.06,-1.06,-1.06,-1.05,-1.05,-1.04,-1.03,-1.02,-1.01,-1.0,-0.99,-0.98,-0.97,-0.96,-0.95,-0.94,-0.94,-0.94,-0.94,-0.96,-0.98,-1.0,-1.04,-1.08,-1.12,-1.17,-1.21,-1.26,-1.3,-1.35,-1.4,-1.46,-1.52,-1.58,-1.65,-1.73,-1.81,-1.88,-1.96,-2.04,-2.11,-2.17,-2.23,-2.29,-2.34,-2.39,-2.45,-2.49,-2.52,-2.54,-2.55,-2.54,-2.52,-2.47,-2.39,-2.29,-2.18,-2.05,-1.91,-1.77,-1.62,-1.47,-1.32,-1.18,-1.04,-0.9,-0.77,-0.63,-0.49,-0.34,-0.19,-0.02,0.14,0.33,0.52,0.73,0.95,1.18,1.44,1.71,2.01,2.35,2.74,3.17,3.6,4.04,4.48,4.9,5.31,5.69,6.03,6.33,6.57,6.78,6.94,7.07,7.16,7.2,7.2,7.13,6.98,6.76,6.49,6.18,5.84,5.48,5.1,4.7,4.29,3.89,3.52,3.16,2.81,2.46,2.13,1.8,1.48,1.18,0.89,0.63,0.38,0.15,-0.06,-0.26,-0.43,-0.58,-0.71,-0.8,-0.83,-0.82,-0.78,-0.74,-0.69,-0.66,-0.64,-0.65,-0.69,-0.81,-1.04,-1.35,-1.72,-2.13,-2.59,-3.07,-3.58,-4.12,-4.67,-5.21,-5.77,-6.33,-6.9,-7.48,-8.07,-8.66,-9.23,-9.76,-10.19,-10.5,-10.69,-10.72,-10.64,-10.5,-10.34,-10.18,-10.05,-9.99,-10.06,-10.22,-10.43,-10.69,-10.98,-11.3,-11.66,-12.02,-12.26],"referencia":[1.4,1.43,1.49,1.56,1.63,1.71,1.78,1.85,1.91,1.97,2.04,2.1,2.16,2.22,2.27,2.33,2.39,2.44,2.48,2.53,2.57,2.6,2.64,2.66,2.68,2.7,2.72,2.73,2.73,2.74,2.74,2.74,2.73,2.72,2.71,2.69,2.67,2.65,2.62,2.59,2.57,2.55,2.52,2.49,2.46,2.43,2.39,2.36,2.32,2.28,2.24,2.2,2.14,2.08,2.02,1.95,1.88,1.8,1.72,1.63,1.54,1.45,1.36,1.27,1.18,1.09,1.0,0.91,0.82,0.72,0.62,0.51,0.41,0.3,0.2,0.09,-0.02,-0.12,-0.22,-0.32,-0.41,-0.5,-0.59,-0.67,-0.75,-0.83,-0.91,-0.98,-1.05,-1.11,-1.18,-1.24,-1.3,-1.36,-1.41,-1.45,-1.48,-1.49,-1.49,-1.48,-1.48,-1.47,-1.45,-1.44,-1.43,-1.41,-1.39,-1.38,-1.35,-1.33,-1.31,-1.28,-1.25,-1.22,-1.2,-1.17,-1.15,-1.13,-1.12,-1.12,-1.12,-1.12,-1.13,-1.14,-1.14,-1.15,-1.15,-1.16,-1.18,-1.2,-1.23,-1.26,-1.3,-1.34,-1.39,-1.44,-1.49,-1.56,-1.62,-1.7,-1.77,-1.86,-1.94,-2.04,-2.13,-2.23,-2.32,-2.42,-2.51,-2.59,-2.67,-2.74,-2.8,-2.84,-2.85,-2.85,-2.81,-2.75,-2.66,-2.53,-2.38,-2.2,-2.0,-1.78,-1.54,-1.3,-1.05,-0.81,-0.58,-0.36,-0.16,0.02,0.19,0.34,0.48,0.61,0.73,0.85,0.98,1.12,1.27,1.43,1.61,1.8,2.01,2.24,2.49,2.75,3.04,3.35,3.67,4.01,4.37,4.73,5.1,5.47,5.84,6.18,6.48,6.75,6.95,7.08,7.12,7.09,6.97,6.77,6.52,6.21,5.88,5.52,5.17,4.82,4.5,4.19,3.91,3.67,3.51,3.42,3.37,3.29,3.14,2.88,2.52,2.07,1.56,1.0,0.43,-0.13,-0.63,-1.04,-1.34,-1.5,-1.48,-1.31,-1.0,-0.66,-0.47,-0.62,-1.12,-1.82,-2.43,-2.8,-2.85,-2.58,-2.26,-2.24,-2.87,-4.01,-5.29,-6.42,-7.25,-7.81,-8.14,-8.35,-8.55,-8.79,-9.06,-9.26,-9.4,-9.54,-9.74,-9.93,-9.89,-9.42,-8.58,-7.98,-8.31,-9.86,-11.83,-13.35,-13.9,-13.72,-14.1,-16.08,-19.18,-21.76,-23.34,-24.07,-24.32,-24.42],"harman":[6.13,6.13,6.15,6.16,6.18,6.19,6.2,6.21,6.21,6.22,6.22,6.22,6.22,6.22,6.22,6.21,6.21,6.2,6.2,6.19,6.18,6.16,6.14,6.11,6.08,6.04,6.0,5.96,5.91,5.85,5.79,5.72,5.64,5.56,5.47,5.37,5.27,5.16,5.05,4.94,4.83,4.71,4.6,4.49,4.37,4.24,4.1,3.96,3.82,3.68,3.54,3.4,3.25,3.1,2.96,2.82,2.68,2.54,2.4,2.26,2.11,1.95,1.8,1.64,1.48,1.32,1.17,1.02,0.87,0.71,0.55,0.4,0.24,0.09,-0.07,-0.22,-0.37,-0.51,-0.65,-0.78,-0.91,-1.03,-1.15,-1.27,-1.4,-1.52,-1.64,-1.77,-1.89,-2.01,-2.13,-2.25,-2.36,-2.46,-2.56,-2.64,-2.73,-2.8,-2.87,-2.94,-2.99,-3.04,-3.08,-3.11,-3.14,-3.17,-3.19,-3.2,-3.21,-3.21,-3.22,-3.22,-3.21,-3.21,-3.2,-3.19,-3.18,-3.16,-3.15,-3.14,-3.12,-3.11,-3.09,-3.07,-3.05,-3.03,-3.01,-2.98,-2.96,-2.93,-2.91,-2.88,-2.85,-2.82,-2.79,-2.76,-2.73,-2.7,-2.66,-2.62,-2.58,-2.53,-2.49,-2.45,-2.4,-2.35,-2.3,-2.24,-2.19,-2.14,-2.09,-2.03,-1.97,-1.9,-1.83,-1.76,-1.68,-1.59,-1.5,-1.41,-1.31,-1.2,-1.09,-0.96,-0.82,-0.67,-0.52,-0.35,-0.18,0.01,0.2,0.39,0.59,0.78,0.98,1.19,1.41,1.64,1.89,2.14,2.42,2.7,3.0,3.31,3.63,3.96,4.28,4.59,4.89,5.19,5.48,5.77,6.05,6.31,6.56,6.78,6.98,7.16,7.33,7.47,7.59,7.69,7.77,7.83,7.87,7.89,7.9,7.88,7.85,7.8,7.73,7.65,7.57,7.47,7.37,7.27,7.15,7.03,6.91,6.78,6.64,6.5,6.36,6.23,6.1,5.97,5.83,5.7,5.57,5.44,5.3,5.13,4.94,4.74,4.53,4.3,4.04,3.76,3.45,3.12,2.77,2.42,2.06,1.66,1.25,0.81,0.34,-0.14,-0.65,-1.17,-1.71,-2.24,-2.76,-3.27,-3.78,-4.31,-4.83,-5.36,-5.87,-6.37,-6.85,-7.34,-7.81,-8.28,-8.73,-9.17,-9.62,-10.08,-10.58,-11.14,-11.77,-12.49,-13.31,-14.23,-15.28,-16.45,-17.75,-19.14,-20.39,-21.26],"basshead":[8.21,8.26,8.34,8.43,8.5,8.54,8.59,8.66,8.73,8.79,8.85,8.92,9.0,9.06,9.11,9.16,9.22,9.27,9.32,9.36,9.4,9.44,9.47,9.5,9.52,9.54,9.55,9.55,9.54,9.54,9.52,9.5,9.48,9.45,9.42,9.38,9.34,9.29,9.24,9.19,9.14,9.08,9.01,8.94,8.87,8.79,8.71,8.63,8.54,8.45,8.35,8.24,8.13,8.01,7.88,7.75,7.61,7.46,7.3,7.13,6.97,6.79,6.62,6.44,6.26,6.08,5.89,5.7,5.51,5.3,5.09,4.88,4.66,4.43,4.2,3.97,3.73,3.49,3.26,3.02,2.78,2.54,2.31,2.06,1.83,1.61,1.41,1.21,1.01,0.8,0.59,0.38,0.16,-0.04,-0.24,-0.43,-0.61,-0.77,-0.92,-1.05,-1.17,-1.27,-1.35,-1.43,-1.49,-1.55,-1.6,-1.65,-1.7,-1.73,-1.76,-1.77,-1.78,-1.78,-1.79,-1.79,-1.8,-1.82,-1.84,-1.86,-1.88,-1.9,-1.92,-1.94,-1.97,-1.99,-2.01,-2.03,-2.05,-2.07,-2.1,-2.12,-2.15,-2.17,-2.2,-2.23,-2.26,-2.29,-2.32,-2.36,-2.39,-2.43,-2.46,-2.5,-2.55,-2.59,-2.63,-2.67,-2.7,-2.73,-2.76,-2.78,-2.78,-2.77,-2.74,-2.7,-2.63,-2.54,-2.42,-2.27,-2.1,-1.9,-1.69,-1.46,-1.21,-0.95,-0.7,-0.46,-0.21,0.03,0.26,0.48,0.69,0.9,1.11,1.33,1.56,1.81,2.08,2.36,2.63,2.88,3.12,3.33,3.53,3.71,3.88,4.05,4.22,4.4,4.58,4.77,4.96,5.16,5.35,5.55,5.74,5.93,6.11,6.28,6.44,6.57,6.68,6.75,6.77,6.74,6.65,6.49,6.28,6.01,5.7,5.36,4.99,4.62,4.25,3.91,3.58,3.26,2.94,2.61,2.29,1.97,1.68,1.43,1.25,1.18,1.17,1.17,1.03,0.59,-0.15,-1.06,-1.89,-2.49,-2.81,-2.84,-2.58,-2.06,-1.31,-0.36,0.61,1.38,1.65,1.2,0.18,-1.21,-2.71,-4.14,-5.41,-6.47,-7.29,-7.89,-8.26,-8.38,-8.25,-7.84,-7.09,-5.92,-4.39,-2.75,-1.73,-2.09,-3.8,-6.19,-8.43,-10.18,-11.35,-11.94,-12.07,-11.91,-11.62,-11.43,-11.58,-12.31,-14.02,-17.3,-22.66,-29.91,-36.83,-41.36],"analitico":[2.62,2.6,2.59,2.58,2.59,2.6,2.62,2.63,2.64,2.65,2.66,2.67,2.68,2.69,2.69,2.67,2.66,2.66,2.66,2.65,2.63,2.61,2.59,2.57,2.54,2.51,2.47,2.43,2.38,2.32,2.26,2.2,2.13,2.06,1.99,1.92,1.84,1.77,1.7,1.62,1.54,1.47,1.39,1.3,1.19,1.11,1.07,1.01,0.94,0.86,0.77,0.68,0.59,0.5,0.4,0.31,0.21,0.11,-0.01,-0.12,-0.23,-0.34,-0.45,-0.55,-0.64,-0.74,-0.83,-0.93,-1.03,-1.12,-1.22,-1.32,-1.43,-1.53,-1.61,-1.7,-1.78,-1.86,-1.93,-1.99,-2.05,-2.11,-2.16,-2.21,-2.26,-2.31,-2.36,-2.41,-2.46,-2.51,-2.56,-2.61,-2.66,-2.71,-2.76,-2.81,-2.85,-2.88,-2.9,-2.92,-2.93,-2.93,-2.92,-2.92,-2.91,-2.9,-2.89,-2.89,-2.88,-2.87,-2.85,-2.82,-2.79,-2.77,-2.75,-2.73,-2.72,-2.7,-2.68,-2.67,-2.65,-2.63,-2.62,-2.62,-2.61,-2.6,-2.6,-2.59,-2.58,-2.56,-2.55,-2.54,-2.53,-2.52,-2.52,-2.51,-2.51,-2.51,-2.5,-2.5,-2.5,-2.5,-2.51,-2.52,-2.52,-2.53,-2.53,-2.54,-2.54,-2.53,-2.52,-2.5,-2.47,-2.42,-2.36,-2.29,-2.19,-2.07,-1.93,-1.75,-1.56,-1.34,-1.1,-0.85,-0.6,-0.33,-0.07,0.19,0.44,0.68,0.9,1.1,1.28,1.45,1.6,1.74,1.88,2.02,2.16,2.3,2.45,2.62,2.79,2.98,3.19,3.4,3.63,3.87,4.13,4.4,4.68,4.97,5.27,5.57,5.87,6.16,6.44,6.68,6.89,7.05,7.16,7.2,7.19,7.13,7.02,6.83,6.6,6.32,6.02,5.72,5.42,5.13,4.86,4.62,4.41,4.21,4.04,3.89,3.76,3.64,3.51,3.36,3.19,3.01,2.85,2.78,2.83,2.96,3.05,2.88,2.32,1.43,0.38,-0.65,-1.57,-2.26,-2.55,-2.32,-1.59,-0.43,0.9,2.07,2.56,2.01,0.68,-0.99,-2.58,-3.88,-4.81,-5.36,-5.55,-5.49,-5.33,-5.23,-5.3,-5.53,-5.87,-6.26,-6.66,-7.07,-7.55,-8.09,-8.52,-8.58,-8.03,-6.88,-5.39,-4.17,-3.68,-3.76,-3.88,-3.65,-3.39,-3.78,-5.35,-7.47,-9.45,-11.17,-12.7,-13.84]}} };
+
+const MODEL_NOTES = {
+  disco: 'Os presets do Disco 3 ainda não foram definidos.',
+  auri:  ''
+};
+const MODEL_NAMES = {disco:'Disco 3', auri:'Auri'};
+
+const $ = id => document.getElementById(id);
+let model = 'auri', sel = 'padrao', device = null;
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+
+function css(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+const FMIN=20, FMAX=20000;
+function xOf(f,w){ return Math.log(f/FMIN)/Math.log(FMAX/FMIN)*w; }
+
+// Curva resultante = medição + EQ, alinhada ao alvo JM-1 pela média de 300 Hz a 3 kHz
+function shownTarget(p){ return p.id === 'harman' ? 'harman' : 'padrao'; }
+function targetCurve(p){ return MEAS[model].targets[shownTarget(p)]; }
+function resultCurve(p){
+  const m = MEAS[model]; if (!m) return null;
+  const tg = targetCurve(p);
+  const raw = m.f.map((f,i)=> m.db[i] + DSP.response(p.show || p.bands, f));
+  let sum=0, n=0; m.f.forEach((f,i)=>{ if (f>=300 && f<=3000){ sum+=raw[i]-tg[i]; n++; } });
+  const off = sum/n; return raw.map(v=>v-off);
+}
+function yRange(){
+  let lo=Infinity, hi=-Infinity;
+  const all = PRESETS[model].flatMap(p=>[targetCurve(p), resultCurve(p)]);
+  all.forEach(c=>c.forEach((v,i)=>{ if (MEAS[model].f[i] <= 16000){ lo=Math.min(lo,v); hi=Math.max(hi,v); } }));
+  return [Math.max(Math.floor(lo/5)*5, -20), Math.ceil(hi/5)*5];
+}
+function trace(g, curve, xOfF, yOfDb){
+  const m = MEAS[model]; g.beginPath();
+  m.f.forEach((f,i)=>{ const x=xOfF(f), y=yOfDb(curve[i]); i? g.lineTo(x,y) : g.moveTo(x,y); });
+}
+function drawMini(canvas, p){
+  const dpr = window.devicePixelRatio||1, w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = w*dpr; canvas.height = h*dpr;
+  const g = canvas.getContext('2d'); g.scale(dpr,dpr);
+  let [lo,hi] = yRange(); if (hi-lo<40){ const pad=Math.ceil((40-(hi-lo))/10)*5; lo-=pad; hi+=pad; } const yOf = db => 2 + (hi-db)/(hi-lo)*(h-4), xF = f => xOf(f,w);
+  g.save(); g.beginPath(); g.rect(0,0,w,h); g.clip();
+  g.strokeStyle = css('--target'); g.lineWidth = 3; trace(g, targetCurve(p), xF, yOf); g.stroke();
+  g.strokeStyle = css('--amber'); g.lineWidth = 1.6; trace(g, resultCurve(p), xF, yOf); g.stroke(); g.restore();
+}
+function drawBig(p){
+  const c = $('big'), dpr = window.devicePixelRatio||1, W = c.clientWidth, H = c.clientHeight;
+  c.width = W*dpr; c.height = H*dpr;
+  const g = c.getContext('2d'); g.scale(dpr,dpr);
+  const L=40, R=10, T=12, B=26, w=W-L-R, h=H-T-B;
+  let [lo,hi] = yRange(); if (hi-lo<40){ const pad=Math.ceil((40-(hi-lo))/10)*5; lo-=pad; hi+=pad; } const yOf = db => T + (hi-db)/(hi-lo)*h, xF = f => L + xOf(f,w);
+  g.font = '11px ' + css('--mono'); g.fillStyle = css('--muted'); g.textBaseline='middle'; g.lineWidth = 1;
+  for (let db=lo; db<=hi; db+=5){ g.strokeStyle = 'rgba(245,240,230,0.07)'; g.beginPath(); g.moveTo(L,yOf(db)); g.lineTo(L+w,yOf(db)); g.stroke(); g.textAlign='right'; g.fillText((db>0?'+':'')+db, L-6, yOf(db)); }
+  g.textAlign='center'; g.textBaseline='top';
+  let lastR = -Infinity; const dense = w > 640, major = [20,100,1000,10000,20000];
+  for (const [f,lab] of [[20,'20'],[30,'30'],[40,'40'],[50,'50'],[60,'60'],[80,'80'],[100,'100'],[150,'150'],[200,'200'],[300,'300'],[400,'400'],[500,'500'],[600,'600'],[800,'800'],[1000,'1k'],[1500,'1.5k'],[2000,'2k'],[3000,'3k'],[4000,'4k'],[5000,'5k'],[6000,'6k'],[8000,'8k'],[10000,'10k'],[15000,'15k'],[20000,'20k']]){
+    const x = xF(f), isMajor = major.includes(f); g.strokeStyle = isMajor ? 'rgba(245,240,230,0.14)' : 'rgba(245,240,230,0.06)'; g.beginPath(); g.moveTo(x,T); g.lineTo(x,T+h); g.stroke();
+    const lx = Math.min(Math.max(x,L+8),L+w-10), lw = g.measureText(lab).width; if ((dense || [20,50,100,200,500,1000,2000,5000,10000,20000].includes(f)) && lx - lw/2 >= lastR + 8) { g.fillStyle = isMajor ? css('--fg') : css('--muted'); g.fillText(lab, lx, T+h+8); lastR = lx + lw/2; }
+  }
+  g.save(); g.beginPath(); g.rect(L,T,w,h); g.clip();
+  g.strokeStyle = css('--target'); g.lineWidth = 8; g.lineJoin='round'; g.lineCap='round'; trace(g, targetCurve(p), xF, yOf); g.stroke();
+  trace(g, resultCurve(p), xF, yOf); g.lineTo(L+w,T+h); g.lineTo(L,T+h); g.closePath(); const gr=g.createLinearGradient(0,T,0,T+h); gr.addColorStop(0,'rgba(243,196,51,0.22)'); gr.addColorStop(1,'rgba(243,196,51,0)'); g.fillStyle=gr; g.fill();
+  g.shadowColor='rgba(243,196,51,0.45)'; g.shadowBlur=10; g.strokeStyle = css('--amber'); g.lineWidth = 2.5; trace(g, resultCurve(p), xF, yOf); g.stroke(); g.restore();
+}
+
+function current(){ return PRESETS[model].find(p=>p.id===sel); }
+let refOpen = false;
+function initRefOpen(){
+  const applied = store.get('kuba-applied-'+model);
+  const isRef = id => PRESETS[model].some(x=>x.id===id && x.group==='ref');
+  refOpen = store.get('kuba-ref-open') === true || isRef(applied) || isRef(sel);
+}
+document.getElementById('refToggle').addEventListener('click', ()=>{ refOpen = !refOpen; store.set('kuba-ref-open', refOpen); render(); });
+function render(){
+  document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.model===model)));
+  $('modelNote').textContent = MODEL_NOTES[model];
+  const applied = store.get('kuba-applied-'+model);
+  $('gridPref').innerHTML = ''; $('gridRef').innerHTML = '';
+  const refs = PRESETS[model].filter(x=>x.group==='ref');
+  $('secRef').hidden = !refs.length;
+  $('refNames').textContent = refs.map(x=>x.name).join(' · ');
+  $('refBody').hidden = !refOpen; $('refToggle').setAttribute('aria-expanded', String(refOpen));
+  PRESETS[model].forEach(p=>{
+    const b = document.createElement('button');
+    b.className='preset'; b.type='button'; b.setAttribute('role','radio'); b.id='p-'+model+'-'+p.id;
+    b.setAttribute('aria-checked', String(p.id===sel));
+    b.innerHTML = '<span class="name"></span><span class="desc"></span>' + (applied===p.id ? '<span class="applied-tag">Aplicado</span>' : '');
+    b.querySelector('.name').textContent = p.name; b.querySelector('.desc').textContent = p.desc;
+    b.addEventListener('click', ()=>{ sel = p.id; $('confirm').hidden = true; render(); });
+    (p.group==='ref' ? $('gridRef') : $('gridPref')).appendChild(b);
+  });
+  const p = current();
+  const empty = !p;
+  $('curveBox').hidden = empty; $('applyBox').hidden = empty; $('emptyBox').hidden = !empty;
+  if (empty) { updateConn(); return; }
+  $('curveTitle').textContent = p.name; $('applyName').textContent = p.name;
+  $('curveMeta').textContent = p.desc;
+  drawBig(p);
+  $('legendTarget').textContent = 'Alvo ' + (p.id === 'harman' ? p.target : 'JM-1');
+  updateConn();
+}
+
+function setStatus(msg, kind){ const s=$('status'); s.textContent = msg; s.className = 'status' + (kind? ' '+kind : ''); }
+function updateConn(){
+  const on = !!(device && device.opened);
+  $('dot').className = 'dot' + (on? ' on':'');
+  $('connLabel').textContent = on ? (device.productName || 'Cabo') + ' conectado' : 'Cabo desconectado';
+  $('connectBtn').hidden = on;
+}
+
+async function connect(){
+  if (!('hid' in navigator)) { setStatus('Para gravar no fone, abra esta página no Chrome ou Edge de um computador (Windows, Mac ou Linux). Celulares e tablets ainda não acessam o cabo.', 'err'); return false; }
+  try {
+    let list = await navigator.hid.getDevices();
+    let d = list.find(x=>x.vendorId===DSP.VENDOR_ID && x.productId===DSP.PRODUCT_ID);
+    if (!d) { list = await navigator.hid.requestDevice({filters:[{vendorId:DSP.VENDOR_ID, productId:DSP.PRODUCT_ID}]}); d = list[0]; }
+    if (!d) { setStatus('Nenhum cabo escolhido. Plugue o cabo e tente de novo.', 'err'); return false; }
+    if (!d.opened) await d.open();
+    device = d; updateConn(); setStatus('Cabo pronto.', 'ok'); return true;
+  } catch(e) { setStatus('Não deu para abrir o cabo: ' + e.message, 'err'); return false; }
+}
+
+async function apply(){
+  const p = current();
+  try {
+    if (!device || !device.opened) { if (!(await connect())) return; }
+    $('applyBtn').disabled = true; $('confirmYes').disabled = true;
+    setStatus('Gravando "' + p.name + '"…');
+    for (const pk of DSP.packets(p.bands, p.pre)) { await device.sendReport(DSP.REPORT_ID, pk); await new Promise(r=>setTimeout(r,16)); }
+    await new Promise(r=>setTimeout(r,150));
+    await device.sendReport(DSP.REPORT_ID, new Uint8Array(DSP.APPLY));
+    store.set('kuba-applied-'+model, p.id);
+    $('confirm').hidden = true;
+    render();
+    setStatus('"' + p.name + '" gravado no cabo do ' + MODEL_NAMES[model] + '.', 'ok');
+  } catch(e) {
+    setStatus('A gravação falhou: ' + e.message + '. Replugue o cabo e tente de novo.', 'err');
+  } finally { $('applyBtn').disabled = false; $('confirmYes').disabled = false; }
+}
+
+$('connectBtn').addEventListener('click', connect);
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click', ()=>{ model = b.dataset.model; sel = PRESETS[model][0] ? PRESETS[model][0].id : null; $('confirm').hidden = true; store.set('kuba-model', model); render(); }));
+$('applyBtn').addEventListener('click', ()=>{
+  if (!('hid' in navigator)) { setStatus('Para gravar no fone, abra esta página no Chrome ou Edge de um computador (Windows, Mac ou Linux). Celulares e tablets ainda não acessam o cabo.', 'err'); return; }
+  $('confirmText').textContent = 'Gravar "' + current().name + '" no cabo do ' + MODEL_NAMES[model] + '? A curva atual do cabo será substituída.';
+  $('confirm').hidden = false;
+});
+$('confirmNo').addEventListener('click', ()=>{ $('confirm').hidden = true; });
+$('confirmYes').addEventListener('click', apply);
+if ('hid' in navigator) navigator.hid.addEventListener('disconnect', e=>{ if (e.device===device){ device=null; updateConn(); setStatus('Cabo desconectado.'); } });
+window.addEventListener('resize', ()=>render());
+const savedModel = store.get('kuba-model'); if (savedModel && PRESETS[savedModel] && PRESETS[savedModel].length) { model = savedModel; sel = PRESETS[model][0].id; }
+initRefOpen();
+render();
+if (!('hid' in navigator)) { $('connectBtn').hidden = true; $('connLabel').textContent = 'Gravação só pelo computador'; }
+if ('hid' in navigator) navigator.hid.getDevices().then(l=>{ const d=l.find(x=>x.vendorId===DSP.VENDOR_ID && x.productId===DSP.PRODUCT_ID); if(d){ (d.opened? Promise.resolve() : d.open()).then(()=>{ device=d; updateConn(); }).catch(()=>{}); } });
+</script>
+</body></html>
