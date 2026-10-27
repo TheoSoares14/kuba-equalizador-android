@@ -19,6 +19,7 @@ public class MainActivity extends BridgeActivity {
   }
 }
 `);
+fs.cpSync('native/res', path.join(A, 'res'), { recursive: true });
 const mf = path.join(A, 'AndroidManifest.xml');
 let m = fs.readFileSync(mf, 'utf8');
 if (!m.includes('usb.host')) m = m.replace('<application', '<uses-feature android:name="android.hardware.usb.host" android:required="false" />\n    <application');
